@@ -723,7 +723,6 @@
 駆けっこ, かけっこ -(foot) race
 駆ける, かける -to run (race esp. horse), to gallop, to canter
 賭ける, かける -to wager, to bet, to risk, to stake, to gamble
-NAME?
 加工, かこう -manufacturing, processing, treatment
 化合, かごう -chemical combination
 嵩張る, かさばる -to be bulky, to be unwieldy, to grow voluminous
@@ -1202,7 +1201,6 @@ NAME?
 巨, こ -big, large, great
 恋する, こいする -to fall in love with, to love
 溝, こう -10^38, hundred undecillion (American), hundred sextillion (British)
-NAME?
 好意, こうい -good will, favor, courtesy
 行為, こうい -act, deed, conduct
 行員, こういん -bank clerk
@@ -1770,7 +1768,6 @@ NAME?
 準ずる, じゅんずる -to apply correspondingly, to correspond to, to be proportionate to, to conform to
 助, じょ -help, rescue, assistant
 情, じょう -feelings, emotion, passion
-NAME?
 尉, じょう -jailer, old man, rank, company officer
 嬢, じょう -young woman
 状, じょう -shape
@@ -1851,7 +1848,6 @@ NAME?
 ずれ -gap, slippage
 ずれる -to slide, to slip off
 制, せい -system, organization, imperial command, laws, regulation, control, government, suppression, restraint, holdin
-NAME?
 生育, せいいく -growth, development, breeding
 成果, せいか -results, fruits
 正解, せいかい -correct, right, correct interpretation (answer solution)
@@ -2315,7 +2311,6 @@ NAME?
 手掛かり, てがかり -contact, trail, scent, on hand, hand hold, clue, key
 手掛ける, てがける -to handle, to manage, to work with, to rear, to look after, to have experience with
 手軽, てがる -easy, simple, informal, offhand, cheap
-NAME?
 適応, てきおう -adaptation, accommodation, conformity
 適宜, てきぎ -suitability
 適性, てきせい -aptitude

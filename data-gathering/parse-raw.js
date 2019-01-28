@@ -4,10 +4,20 @@ let path = require('path')
 let merge = require('merge2')
 let split = require('split2')
 let through = require('through2-concurrent').obj
+let parser = require('./parser.js')
 
 let print = through((chunk, enc, callback) => {
   console.log(chunk)
   callback()
+})
+
+let errPrint = through((chunk, enc, callback) => {
+  console.error(chunk)
+  callback()
+})
+
+let jsonify = through((chunk, enc, callback) => {
+  callback(null, JSON.stringify(chunk))
 })
 
 let meter = through(function (chunk, enc, callback) {
@@ -21,6 +31,26 @@ let meter = through(function (chunk, enc, callback) {
 })
 
 let sink = fs.createWriteStream('/dev/null')
+
+let errorStream = through((chunk, enc, callback) => {
+  callback(null, chunk)
+})
+
+let parse = through((chunk, enc, callback) => {
+  let words
+  try {
+    words = parser(chunk)
+  } catch (e) {
+    errorStream.push({
+      word: chunk,
+      error: e.message
+    })
+    return callback()
+  }
+  for (word of words) {
+    callback(null, word)
+  }
+})
 
 let files = [
   'N1-vocab.txt',
@@ -38,4 +68,10 @@ fileStreams = files.map(filename => {
 
 rawLines = merge(fileStreams)
 
-rawLines.pipe(meter).pipe(sink)
+let words = rawLines.pipe(parse)
+
+module.exports = words
+// words.on('finish', () => {
+//   console.log('parsing finished')
+//   errorStream.pipe(jsonify).pipe(errPrint)
+// })
