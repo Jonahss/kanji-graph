@@ -6,6 +6,7 @@
 // 初め / 始め, はじめ -beginning
 // 毎月, まいげつ / まいつき -every month
 
+
 // when there are multiple kanji spellings, let's split into multiple words
 // so expect getting back an array of results I guess.
 
