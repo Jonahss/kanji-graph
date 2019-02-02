@@ -1,20 +1,40 @@
 let test = require('ava')
-
+let _ = require('lodash')
 let RedisGraph = require('ioredisgraph')
-let graph = new RedisGraph('kanji')
-let addWord = require('./add-word.js')(graph)
+
+test.beforeEach(t => {
+  t.context.graph = new RedisGraph(`test:${t.title.match(/beforeEach hook for (.*)/)[1]}`)
+  t.context.addWord = require('./add-word.js')(t.context.graph)
+})
+
+test.afterEach.always(async t => {
+  return await t.context.graph.delete()
+})
 
 test('add-word', async t => {
   let word = {
-    kanji: '歯',
+    kanji: '片付く',
     pronunciation: [
-      'は'
+      'かたづく'
     ],
-    meaning: 'tooth'
+    meaning: 'to put in order,to dispose of,to solve'
   }
 
-  let results = await addWord(word)
+  let results = await t.context.addWord(word)
 
-  let inDb = await graph.query(`MATCH (k:kanji) RETURN k`)
-  t.log(JSON.stringify(inDb, null, 2))
+  let kanjiNodes = await t.context.graph.query(`MATCH (k:kanji) RETURN k`)
+  t.true(_.difference(kanjiNodes.map(n => n['k.character']), ['片', '付']).length == 0)
+
+  let expectedWord = {
+    'w.kanji': '片付く',
+    'w.meaning': 'to put in order,to dispose of,to solve',
+    'w.pronunciation': 'かたづく',
+  }
+
+  let wordNodes = await t.context.graph.query(`MATCH (w:word) RETURN w`)
+  t.deepEqual(wordNodes[0], expectedWord)
+  t.true(wordNodes.length == 1)
+
+  let connections = await t.context.graph.query(`MATCH (:word)-[e:writtenWith]->(:kanji) RETURN e`)
+  t.true(connections.length == 2)
 })
