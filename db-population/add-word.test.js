@@ -8,7 +8,7 @@ test.beforeEach(t => {
 })
 
 test.afterEach.always(async t => {
-  return await t.context.graph.delete()
+  return t.context.graph.delete().catch(() => {})
 })
 
 test('add-word', async t => {

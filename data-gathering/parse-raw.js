@@ -59,6 +59,9 @@ let files = [
   'N4-vocab.txt',
   'N5-vocab.txt'
 ]
+// for testing
+files = ['sample.txt']
+
 files = files.map(name => path.resolve(__dirname, 'raw', name))
 
 fileStreams = files.map(filename => {
