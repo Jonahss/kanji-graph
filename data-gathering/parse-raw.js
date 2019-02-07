@@ -60,7 +60,7 @@ let files = [
   'N5-vocab.txt'
 ]
 // for testing
-files = ['sample.txt']
+//files = ['sample.txt']
 
 files = files.map(name => path.resolve(__dirname, 'raw', name))
 
