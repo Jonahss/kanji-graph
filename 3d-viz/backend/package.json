@@ -1,0 +1,19 @@
+{
+  "name": "brunch-app",
+  "description": "Brunch.io application",
+  "private": true,
+  "author": "Brunch",
+  "version": "0.0.1",
+  "repository": "",
+  "scripts": {
+    "start": "",
+    "build": ""
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-ws": "^4.0.0",
+    "ioredisgraph": "^1.0.1",
+    "yargs": "^13.1.0"
+  },
+  "devDependencies": {}
+}
