@@ -66,7 +66,8 @@ let convertToD3GraphData = (rawRedisResults) => {
     // add relationship to links list
     d3GraphData.links.push({
       source: redisResult['ID(w)'],
-      target: redisResult['ID(k)']
+      target: redisResult['ID(k)'],
+      color: 'red'
     })
   }
 
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   socket.onopen = function () {
     console.log('socket open');
     socket.onmessage = (msg) => {
-      console.log(msg)
+    //  console.log(msg)
       let data = JSON.parse(msg.data);
 
       if (data.status != 'ok') {
@@ -90,7 +91,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       let graphData = convertToD3GraphData(data.results)
-      console.log(graphData)
+    //  console.log(graphData)
+
+      let Graph = ForceGraph3D()(document.getElementById('3d-graph'))
+        .linkOpacity(.3)
+        .linkWidth(5)
+        .graphData(graphData)
+      Graph
+        .d3Force('link')
+        .distance(50)
+      Graph
+        .d3Force('charge')
+        .strength(-400)
 
     // if (data.status === 'ok') {
       //   let relationships = data.results;

@@ -19,7 +19,7 @@ app.ws('/query/:windowId', function (ws) {
     let graph = new RedisGraph({ port: argv.p, password: argv.P, host: argv.h, graphName: request.graphName });
 
     //example from demo: 'MATCH (n:Team {teamId:2})<-[r]-(m:User) RETURN ID(n), n.name, n.type, ID(m), m.name, m.type'
-    let graphDump = await graph.query(`MATCH (w:word)-[r]->(k:kanji) RETURN ID(w), w.kanji, labels(w), ID(k), k.character, labels(k) limit 10`)
+    let graphDump = await graph.query(`MATCH (w:word)-[r]->(k:kanji) RETURN ID(w), w.kanji, labels(w), ID(k), k.character, labels(k)`)
 
     ws.send(JSON.stringify({
       status: 'ok',
