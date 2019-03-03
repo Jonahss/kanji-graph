@@ -1,6 +1,7 @@
 require('babel-polyfill')
 let _ = require('lodash')
 let ForceGraph3D = require('3d-force-graph')
+let SpriteText = require('three-spritetext')
 
 // redis objects looks like
 // {
@@ -11,6 +12,7 @@ let ForceGraph3D = require('3d-force-graph')
 //   k.character,
 //   labels(k)
 // }
+//
 // and for d3 we want nodes/links arrays
 // {
 //     "nodes": [
@@ -57,7 +59,7 @@ let convertToD3GraphData = (rawRedisResults) => {
     if (!nodesAsHash[redisResult['ID(k)']]) {
       nodesAsHash[redisResult['ID(k)']] = {
         id: redisResult['ID(k)'],
-        val: 1,
+        val: 0,
         name: redisResult['k.character'],
         color: 'yellow'
       }
@@ -69,6 +71,10 @@ let convertToD3GraphData = (rawRedisResults) => {
       target: redisResult['ID(k)'],
       color: 'red'
     })
+
+    // add 1 to the target node's `val` property.
+    // this sets node.val to the number of incoming connections to the node.
+    nodesAsHash[redisResult['ID(k)']].val++
   }
 
   d3GraphData.nodes = _.values(nodesAsHash)
@@ -83,7 +89,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   socket.onopen = function () {
     console.log('socket open');
     socket.onmessage = (msg) => {
-    //  console.log(msg)
       let data = JSON.parse(msg.data);
 
       if (data.status != 'ok') {
@@ -94,58 +99,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     //  console.log(graphData)
 
       let Graph = ForceGraph3D()(document.getElementById('3d-graph'))
-        .linkOpacity(.3)
-        .linkWidth(5)
+        .linkOpacity(.2)
+        .linkWidth(4)
         .graphData(graphData)
       Graph
+        .nodeThreeObject(node => {
+          //console.log(node)
+          // // use a sphere as a drag handle
+          // const obj = new THREE.Mesh(
+          //   new THREE.SphereGeometry(10),
+          //   new THREE.MeshBasicMaterial({ depthWrite: false, transparent: true, opacity: 0 })
+          // );
+          // add text sprite as child
+          const sprite = new SpriteText(node.name)
+          sprite.color = node.color
+          sprite.textHeight = (node.val*1.5) + 8
+        //  obj.add(sprite)
+          return sprite
+        })
+      Graph
         .d3Force('link')
-        .distance(50)
+        .distance(400)
       Graph
         .d3Force('charge')
-        .strength(-400)
-
-    // if (data.status === 'ok') {
-      //   let relationships = data.results;
-      //   let queryTime = data.time;
-      //   let nodesAsObject = {};
-      //   relationships.forEach((o) => {
-      //     o.forEach((e) => {
-      //       let node = {};
-      //       node.id = e[1][1];
-      //       node.extended = {};
-      //       e.forEach(function (aPair) {
-      //         node.extended[aPair[0]] = aPair[1];
-      //       });
-      //       nodesAsObject['_' + e[0][1]] = node;
-      //     });
-      //   });
-      //   Object.keys(nodesAsObject).forEach(function (aNode, i) {
-      //     nodesAsObject[aNode].linearId = i;
-      //     nodes.push(nodesAsObject[aNode]);
-      //   });
-      //   relationships.forEach((o) => {
-      //     o.forEach((e, i) => {
-      //       if ((o.length - 1) !== i) {
-      //         links.push({ source: nodesAsObject['_' + e[0][1]].linearId, target: nodesAsObject['_' + o[i + 1][0][1]].linearId });
-      //       }
-      //     });
-      //   });
+        .strength(-1000)
 
 
-
-        // textEls = texts.selectAll('text').data(nodes, function (node) { return node.id })
-        // textEls.exit().remove()
-        // var textEnter = textEls
-        //   .enter()
-        //   .append('text')
-        //   .text(function (node) { return node.id })
-        //   .attr('font-size', 15);
-        // textEls = textEnter.merge(textEls);
-    //    restart();
-  //      console.log(queryTime);
-      // } else {
-      //   console.error(data.message)
-      // }
     }
 
     let askForGraph = (query, chunkSize) => {
