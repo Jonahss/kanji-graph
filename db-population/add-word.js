@@ -16,13 +16,15 @@ function addWordFunctionFactory (graph) {
     // for each kanji in the word:
     //   if the kanji doesn't exist as a KANJI node, create it
     //   create a relationship between the WORD and the KANJI
-
     let kanji = getNonKanaKanji(word.kanji)
 
     if (!kanji.length) {
       return
     }
-    
+
+    // sanitize
+    word.meaning = word.meaning.replace("'", "\\'")
+
     await Promise.all(kanji.map(kanji => {
       return graph.query(`MERGE (:kanji {character: '${kanji}'})`)
     }))
