@@ -32,11 +32,18 @@ let meter = through(function (chunk, enc, callback) {
 
 let sink = fs.createWriteStream('/dev/null')
 
+let annotateStream = (key, val) => {
+  return through((chunk, enc, callback) => {
+    chunk[key] = val
+    callback(null, chunk)
+  })
+}
+
 let errorStream = through((chunk, enc, callback) => {
   callback(null, chunk)
 })
 
-let parse = through((chunk, enc, callback) => {
+let parse = () => through((chunk, enc, callback) => {
   let words
   try {
     words = parser(chunk)
@@ -66,12 +73,12 @@ files = files.map(name => path.resolve(__dirname, 'raw', name))
 
 fileStreams = files.map(filename => {
   return fs.createReadStream(filename, 'utf8')
-        .pipe(split())
+           .pipe(split())
+           .pipe(parse())
+           .pipe(annotateStream('jlptLevel', filename.slice(-12, -10)))
 })
 
-rawLines = merge(fileStreams)
-
-let words = rawLines.pipe(parse)
+let words = merge(fileStreams)
 
 module.exports = words
 // words.on('finish', () => {

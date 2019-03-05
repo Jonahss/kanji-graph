@@ -7,10 +7,10 @@ let SpriteText = require('three-spritetext')
 // {
 //   ID(w),
 //   w.kanji,
-//   labels(w),
+//   w.jlptLevel,
 //   ID(k),
 //   k.character,
-//   labels(k)
+//   k.jlptLevel
 // }
 //
 // and for d3 we want nodes/links arrays
@@ -51,6 +51,7 @@ let convertToD3GraphData = (rawRedisResults) => {
         id: redisResult['ID(w)'],
         val: 1,
         name: redisResult['w.kanji'],
+        jlptLevel: redisResult['w.jlptLevel'],
         color: 'cyan'
       }
     }
@@ -61,6 +62,7 @@ let convertToD3GraphData = (rawRedisResults) => {
         id: redisResult['ID(k)'],
         val: 0,
         name: redisResult['k.character'],
+        jlptLevel: redisResult['k.jlptLevel'],
         color: 'yellow'
       }
     }
@@ -135,3 +137,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     askForGraph()
   };
 });
+
+function getColorBasedOnLevel (level) {
+  switch (level) {
+    case 'N5':
+      return 'red'
+    case 'N4':
+      return 'orange'
+    case 'N3':
+      return 'yellow'
+    case 'N2':
+      return 'green'
+    case 'N1':
+      return 'blue'
+  }
+}

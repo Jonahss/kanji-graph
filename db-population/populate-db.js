@@ -6,14 +6,20 @@ let words = require('../data-gathering/parse-raw.js')
 let graph = new RedisGraph('kanji')
 let addWordToGraph = require('./add-word.js')(graph)
 
+async function populateDb () {
+  // make graph exist
+  await graph.query(`CREATE (:genesis)`)
 
-let add = through(async (chunk, enc, callback) => {
-  await addWordToGraph(chunk)
-  callback()
-})
+  let add = through(async (chunk, enc, callback) => {
+    await addWordToGraph(chunk)
+    callback()
+  })
 
-let sink = fs.createWriteStream('/dev/null')
+  let sink = fs.createWriteStream('/dev/null')
 
-let added = words.pipe(add)
-added.on('end', () => graph.quit())
-added.pipe(sink)
+  let added = words.pipe(add)
+  added.on('end', () => graph.quit())
+  added.pipe(sink)
+}
+
+populateDb()

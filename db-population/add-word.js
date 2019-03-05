@@ -4,7 +4,8 @@
 //   pronunciation: [
 //     'はじめ'
 //   ],
-//   meaning: 'beginning'
+//   meaning: 'beginning',
+//   jlptLevel: 'N1'
 // }
 
 //console.log('messed up word', word, e.message)
@@ -25,8 +26,18 @@ function addWordFunctionFactory (graph) {
     // sanitize
     word.meaning = word.meaning.replace("'", "\\'")
 
-    await Promise.all(kanji.map(kanji => {
-      return graph.query(`MERGE (:kanji {character: '${kanji}'})`)
+    await Promise.all(kanji.map(async (kanji) => {
+      // query first to find duplicates
+      let existing = await graph.query(`MATCH (existing:kanji {character: '${kanji}'}) RETURN ID(existing), existing.jlptLevel`)
+      if (existing.length === 0) {
+        // create if not exist
+        return graph.query(`MERGE (:kanji {character: '${kanji}', jlptLevel: '${word.jlptLevel}'})`)
+      } else {
+        // if it exists, make sure we have the minimum jlpt level (meaning the largest number)
+        if (existing[0]['existing.jlptLevel'] < word.jlptLevel && word.jlptLevel.length) {
+          return graph.query(`MATCH (existing:kanji {character: '${kanji}'}) SET existing.jlptLevel = '${word.jlptLevel}'`)
+        }
+      }
     }))
 
     let whereClause = kanji.map(k => {
@@ -35,7 +46,7 @@ function addWordFunctionFactory (graph) {
     whereClause = `(${whereClause}) AND w.kanji = '${word.kanji}'`
 
     // create the node for this word
-    await graph.query(`CREATE (:word {kanji: '${word.kanji}', pronunciation: '${word.pronunciation.join(',')}', meaning: '${word.meaning}'})`)
+    await graph.query(`CREATE (:word {kanji: '${word.kanji}', pronunciation: '${word.pronunciation.join(',')}', meaning: '${word.meaning}', jlptLevel: '${word.jlptLevel}'})`)
     // create relationships with kaji in this word
     let ex = await graph.query(`MATCH (k:kanji), (w:word) WHERE ${whereClause} CREATE (w)-[:writtenWith]->(k)`)
     console.log(`kanji: ${word.kanji}, num kanji in word: ${kanji.length} relationships created ${ex.meta.relationshipsCreated}`)
