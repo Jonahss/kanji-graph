@@ -1,4 +1,5 @@
 require('babel-polyfill')
+
 let _ = require('lodash')
 let ForceGraph3D = require('3d-force-graph')
 let SpriteText = require('three-spritetext')
@@ -116,6 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const sprite = new SpriteText(node.name)
           sprite.color = node.color
           sprite.textHeight = (node.val*1.5) + 8
+          sprite.visible = !!Graph.nodeOpacity()
         //  obj.add(sprite)
           return sprite
         })
@@ -126,7 +128,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         .d3Force('charge')
         .strength(-1000)
 
+      Graph.kanjiGraph = {} // for personal use
+      window.Graph = Graph // let's play in console
 
+      Graph.onEngineStop(() => {
+        console.log('engine stop')
+        if (!Graph.kanjiGraph.opacityAnimationTimer) {
+          Graph.kanjiGraph.opacityAnimationTimer = startOpacityAnimation(Graph)
+        }
+      })
     }
 
     let askForGraph = (query, chunkSize) => {
@@ -151,4 +161,41 @@ function getColorBasedOnLevel (level) {
     case 'N1':
       return 'blue'
   }
+}
+
+let getJlptLevel = function * () {
+  let level = 'N5'
+  while (true) {
+    yield level
+
+    switch (level) {
+      case 'N5':
+        level = 'N4'
+        break
+      case 'N4':
+        level = 'N3'
+        break
+      case 'N3':
+        level = 'N2'
+        break
+      case 'N2':
+        level = 'N1'
+        break
+      case 'N1':
+        level = 'N5'
+        break
+    }
+  }
+}
+
+function startOpacityAnimation (Graph) {
+  let opacity = 1
+  let toggle = () => {
+    let level = getJlptLevel()
+
+    Graph.nodeOpacity(opacity)
+         .linkOpacity(opacity)
+  }
+
+  return setInterval(toggle, 15 * 1000)
 }

@@ -10,5 +10,13 @@ exports.files = {
 };
 
 exports.plugins = {
-  babel: {presets: ['env']}
+  babel: {
+    presets: [
+      [
+        'env', {
+          'useBuiltIns': 'true'
+        }
+      ]
+    ]
+  }
 };
