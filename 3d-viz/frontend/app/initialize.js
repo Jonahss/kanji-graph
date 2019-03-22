@@ -72,7 +72,8 @@ let convertToD3GraphData = (rawRedisResults) => {
     d3GraphData.links.push({
       source: redisResult['ID(w)'],
       target: redisResult['ID(k)'],
-      color: 'red'
+      color: 'red',
+      jlptLevel: redisResult['k.jlptLevel']
     })
 
     // add 1 to the target node's `val` property.
@@ -163,7 +164,7 @@ function getColorBasedOnLevel (level) {
   }
 }
 
-let getJlptLevel = function * () {
+let getJlptLevel = (function * () {
   let level = 'N5'
   while (true) {
     yield level
@@ -186,16 +187,20 @@ let getJlptLevel = function * () {
         break
     }
   }
-}
+})()
 
 function startOpacityAnimation (Graph) {
   let opacity = 1
   let toggle = () => {
-    let level = getJlptLevel()
+    let level = getJlptLevel.next().value
+    Graph.jlptLevel = level
+    console.log(`now rendering level ${Graph.jlptLevel}`)
 
     Graph.nodeOpacity(opacity)
-         .linkOpacity(opacity)
+         .linkOpacity((link) => {
+           return link.jlptLevel >= Graph.jlptLevel ? 1 : 0
+         })
   }
 
-  return setInterval(toggle, 15 * 1000)
+  return setInterval(toggle, 7 * 1000)
 }
