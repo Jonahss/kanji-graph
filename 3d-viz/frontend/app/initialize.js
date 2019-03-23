@@ -72,7 +72,7 @@ let convertToD3GraphData = (rawRedisResults) => {
     d3GraphData.links.push({
       source: redisResult['ID(w)'],
       target: redisResult['ID(k)'],
-      color: 'red',
+      color: getColorBasedOnLevel(redisResult['k.jlptLevel']),
       jlptLevel: redisResult['k.jlptLevel']
     })
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       let Graph = ForceGraph3D()(document.getElementById('3d-graph'))
         .linkOpacity(.2)
-        .linkWidth(4)
+        .linkWidth(8)
         .graphData(graphData)
       Graph
         .nodeThreeObject(node => {
@@ -154,13 +154,13 @@ function getColorBasedOnLevel (level) {
     case 'N5':
       return 'red'
     case 'N4':
-      return 'orange'
+      return 'magenta'
     case 'N3':
       return 'yellow'
     case 'N2':
-      return 'green'
+      return 'cyan'
     case 'N1':
-      return 'blue'
+      return 'purple'
   }
 }
 
@@ -190,6 +190,8 @@ let getJlptLevel = (function * () {
 })()
 
 function startOpacityAnimation (Graph) {
+  const ANIMATION_CYCLE_MS = 5 * 1000
+
   let opacity = 1
   let toggle = () => {
     let level = getJlptLevel.next().value
@@ -202,5 +204,5 @@ function startOpacityAnimation (Graph) {
          })
   }
 
-  return setInterval(toggle, 7 * 1000)
+  return setInterval(toggle, ANIMATION_CYCLE_MS)
 }
