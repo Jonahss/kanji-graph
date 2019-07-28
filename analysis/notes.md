@@ -12,6 +12,8 @@ ppl to tell:
 - cameron
 - eric
 - connor
+- ben kitty mayor
+- jack and brducker. jboice? dr strikers friend?
 - kazu, sumio
 - gwern
 - nagashima sensei? hillman sensei? jcmu sensei?
