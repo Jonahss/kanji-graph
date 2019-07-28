@@ -43,13 +43,15 @@ function addWordFunctionFactory (graph) {
     let whereClause = kanji.map(k => {
       return `k.character = '${k}'`
     }).join(' OR ')
-    whereClause = `(${whereClause}) AND w.kanji = '${word.kanji}'`
 
     // create the node for this word
     await graph.query(`CREATE (:word {kanji: '${word.kanji}', pronunciation: '${word.pronunciation.join(',')}', meaning: '${word.meaning}', jlptLevel: '${word.jlptLevel}'})`)
-    // create relationships with kaji in this word
-    let ex = await graph.query(`MATCH (k:kanji), (w:word) WHERE ${whereClause} CREATE (w)-[:writtenWith]->(k)`)
+    // create relationships with kanji in this word
+    let ex = await graph.query(`MATCH (k:kanji), (w:word {kanji: '${word.kanji}'}) WHERE ${whereClause} CREATE (w)-[:writtenWith]->(k)`)
     console.log(`kanji: ${word.kanji}, num kanji in word: ${kanji.length} relationships created ${ex.meta.relationshipsCreated}`)
+    if (ex.meta.relationshipsCreated > kanji.length) {
+      throw new Error(`too many relationships created for ${word.kanji}. \nquery: MATCH (k:kanji), (w:word) WHERE ${whereClause} CREATE (w)-[:writtenWith]->(k)`)
+    }
   }
 
   return async (word) => {

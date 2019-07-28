@@ -20,4 +20,10 @@ async function run () {
   graph.quit()
 }
 
-run()
+//run()
+
+async function test () {
+  let res = await graph.query(`MATCH (k:kanji), (w:word) WHERE (k.character = '湿' OR k.character = '気') AND w.kanji = '湿気' RETURN k, w`)
+  console.log(res)
+}
+test()

@@ -7,6 +7,10 @@ let graph = new RedisGraph('kanji')
 let addWordToGraph = require('./add-word.js')(graph)
 
 async function populateDb () {
+  // delete graph if it exists
+  try {
+    await graph.delete()
+  } catch {}
   // make graph exist
   await graph.query(`CREATE (:genesis)`)
 
