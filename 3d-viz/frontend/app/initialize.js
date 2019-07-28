@@ -4,6 +4,8 @@ let _ = require('lodash')
 let ForceGraph3D = require('3d-force-graph')
 let SpriteText = require('three-spritetext')
 
+let ANIMATE = false // set to true in order to cycle through an animation where first N5 is visible. Then N5 and N4, then N5, N5 and N3....
+
 // redis objects looks like
 // {
 //   ID(w),
@@ -134,8 +136,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       Graph.onEngineStop(() => {
         console.log('engine stop')
-        if (!Graph.kanjiGraph.opacityAnimationTimer) {
-          Graph.kanjiGraph.opacityAnimationTimer = startOpacityAnimation(Graph)
+        if (ANIMATE) {
+          if (!Graph.kanjiGraph.opacityAnimationTimer) {
+            Graph.kanjiGraph.opacityAnimationTimer = startOpacityAnimation(Graph)
+          }
         }
       })
     }
