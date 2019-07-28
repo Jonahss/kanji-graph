@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "ava": "^1.2.0",
-    "ioredisgraph": "^1.0.0",
+    "ioredisgraph": "^2.0.0",
     "merge2": "^1.2.3",
     "split2": "^3.1.0",
     "through2-concurrent": "^2.0.0"
