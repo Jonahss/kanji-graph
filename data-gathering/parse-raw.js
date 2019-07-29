@@ -43,6 +43,21 @@ let errorStream = through((chunk, enc, callback) => {
   callback(null, chunk)
 })
 
+// warn of a duplicate chunk passing through this stream
+// keyFunc is called with the chunk, return unique key to check duplication
+let noDuplicate = (keyFunc) => {
+  keys = {}
+  let noDupStream = through((chunk, enc, callback) => {
+    let key = keyFunc(chunk)
+    if (keys[key]) {
+      return callback(new Error(`Duplicate with key ${key} in stream`))
+    }
+    keys[key] = true
+    callback(null, chunk)
+  })
+  return noDupStream
+}
+
 let parse = () => through((chunk, enc, callback) => {
   let words
   try {
@@ -76,6 +91,7 @@ fileStreams = files.map(filename => {
            .pipe(split())
            .pipe(parse())
            .pipe(annotateStream('jlptLevel', filename.slice(-12, -10)))
+           .pipe(noDuplicate((word) => word.kanji + '#' + word.pronunciation))
 })
 
 let words = merge(fileStreams)

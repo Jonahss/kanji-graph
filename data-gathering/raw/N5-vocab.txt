@@ -27,8 +27,6 @@
 あなた -you
 兄, あに -(humble) older brother
 姉, あね -(humble) older sister
-あの -that over there
-あの -um...
 アパート -apartment
 あびる -to bathe,to shower
 危ない, あぶない -dangerous
@@ -60,7 +58,6 @@
 五日, いつか -five days, fifth day
 一緒, いっしょ -together
 五つ, いつつ -five
-いつも -always
 犬, いぬ -dog
 今, いま -now
 意味, いみ -meaning
@@ -73,7 +70,7 @@
 色, いろ -colour
 いろいろ -various
 上, うえ -on top of
-後ろ, うしろ -behind
+後ろ, うしろ -behind, afterwards, since then, in the future
 薄い, うすい -thin,weak
 歌, うた -song
 歌う, うたう -to sing
@@ -195,8 +192,9 @@
 切る, きる -to cut
 着る, きる -to put on from the shoulders down
 きれい -pretty,clean
-キロ / キログラム -kilogram
-キロ / キロメートル -kilometre
+キログラム -kilogram
+キロ -(abbr) 10^3
+キロメートル -kilometre
 銀行, ぎんこう -bank
 金曜日, きんようび -Friday
 薬, くすり -medicine
@@ -336,7 +334,6 @@
 その -that
 そば -near,beside
 空, そら -sky
-それ -that
 それから -after that
 それでは -in that situation
 大学, だいがく -university
@@ -345,8 +342,6 @@
 大好き, だいすき -to be very likeable
 大切, たいせつ -important
 台所, だいどころ -kitchen
-たいへん -very
-たいへん -difficult situation
 高い, たかい -tall, expensive
 たくさん -many
 タクシー -taxi
@@ -382,7 +377,6 @@
 次, つぎ -next
 着く, つく -to arrive at
 机, つくえ -desk
-作る, つくる -to make
 つける -to turn on
 勤める, つとめる -to work for someone
 つまらない -boring

@@ -29,7 +29,7 @@
 油, あぶら -oil
 余り, あまり -not very (used as adverb),not much
 誤り, あやまり -error
-粗い, あらい -Coarse
+粗い, あらい -coarse, rough
 嵐, あらし -storm, tempest
 新た, あらた -new, fresh, novel
 あらゆる -all, every
@@ -97,7 +97,6 @@
 一般, いっぱん -general, liberal, universal, ordinary, average
 一方, いっぽう -(1) on the other hand,(2) meanwhile,(3) only, simple, in turn
 いつまでも -forever, for good, eternally, as long as one likes, indefinitely
-いつも -always, usually, every time, never (with neg. verb)
 移動, いどう -removal, migration, movement
 従兄弟, いとこ -cousin (male)
 稲, いね -rice-plant
@@ -131,7 +130,6 @@
 兎, うさぎ -rabbit, hare
 牛, うし -cattle, cow
 失う, うしなう -to lose, to part with
-後ろ, うしろ -afterwards, since then, in the future, behind
 嘘, うそ -lie, falsehood, incorrect fact, inappropriate
 疑う, うたがう -to doubt, to distrust, to be suspicious of, to suspect
 内, うち -inside
@@ -165,7 +163,7 @@
 餌, えさ -feed, bait
 得る, える -to get, to gain, to win
 円, えん -circle, money
-縁, えん -relation, connection, ties, fate
+縁, えん -relation, connection, ties, fate, karma
 延期, えんき -postponement, adjournment
 演技, えんぎ -acting, performance
 援助, えんじょ -assistance, aid, support
@@ -315,7 +313,6 @@
 柄, がら -pattern
 刈る, かる -to cut (hair),to mow (grass),to harvest
 彼等, かれら -they (usually male)
-川, かわ -river
 河, かわ -river,stream
 皮, かわ -skin,hide,leather,fur,pelt,bark,shell
 革, かわ -leather
@@ -387,7 +384,6 @@
 旧, きゅう -ex-
 級, きゅう -class, grade, rank,school class, grade
 球, きゅう -globe,sphere,ball
-九, きゅう / く -nine
 休暇, きゅうか -holiday,day off,furlough
 休憩, きゅうけい -rest,break,recess,intermission
 急激, きゅうげき -sudden,precipitous,radical
@@ -417,7 +413,6 @@
 霧, きり -fog,mist
 切れ, きれ -cloth,piece,cut,chop
 切れる, きれる -(1) to cut well,to be sharp,(2) to break (off)
-キロ -(abbr) kilo-,kilogram,kilometre,10^3
 記録, きろく -record,minutes,document
 議論, ぎろん -argument,discussion,dispute
 金, きん -(1) gold,(2) gold general (shogi) (abbr)
@@ -433,7 +428,6 @@
 筋肉, きんにく -muscle,sinew
 金融, きんゆう -finance, monetary circulation,
 金曜, きんよう -(abbr) Friday
-九, く -nine
 句, く -sentence
 食う, くう -(male) (vulg) to eat
 偶然, ぐうぜん -(by) chance,unexpectedly,suddenly
@@ -645,9 +639,7 @@
 散歩, さんぽ -walk,stroll
 氏, し -family name,lineage,birth
 詩, し -poem,verse of poetry
-四, し / よん -four
 幸せ, しあわせ -happiness,good fortune,luck,blessing
-ジェット機, ジェットき -jet aeroplane
 直に, じかに -immediately,readily,directly
 しかも -moreover,furthermore,nevertheless,and yet
 叱る, しかる -to scold
@@ -676,7 +668,6 @@
 したがって, したがって -therefore,consequently,in accordance with
 支度, したくする -preparation, to prepare
 親しい, したしい -intimate,close (e.g. friend)
-七, しち / なな -seven
 質, しつ -quality,nature (of person)
 失業, しつぎょう -unemployment
 実験, じっけん -experiment
@@ -863,7 +854,6 @@
 すなわち -that is,namely,i.e.
 素晴らしい, すばらしい -wonderful,splendid,magnificent
 全て, すべて -all,the whole,entirely,in general,wholly
-全て, すべて -all,whole,entire,complete,overall,pan
 済ませる, すませる -to be finished
 すみません -sorry,excuse me
 為る, する -to do
@@ -951,7 +941,6 @@
 そのまま -without change,as it is (i.e. now)
 側, そば -side,edge,third person
 粗末, そまつ -crude,rough,plain,humble
-それ -it,that
 それぞれ -each,every,either,respectively,severally
 それでも -but (still),and yet,nevertheless,even so,notwithstanding
 それとも -or,or else
@@ -1129,7 +1118,6 @@
 適切, てきせつ -pertinent,appropriate,adequate,relevance
 適度, てきど -moderate
 適用, てきよう -applying
-できる -to be able to,to be ready,to occur
 出来るだけ, できるだけ -as (much) (soon) as possible
 できれば -if at all possible
 手品, てじな -sleight of hand,conjuring trick,magic,juggling
@@ -1226,12 +1214,10 @@
 謎, なぞ -riddle,puzzle,enigma
 納得, なっとく -consent,assent,understanding
 等, など -et cetera,etc.,and the like
-七, なな -seven
 何, なに -what
 何か, なにか -something
 なにも -nothing
 鍋, なべ -saucepan,pot
-生, なま -(1) draft (beer),(2) raw,unprocessed
 生, なま -(1) draft (beer),(2) raw,unprocessed
 怠ける, なまける -to be idle,to neglect
 波, なみ -wave
@@ -1447,7 +1433,6 @@
 減らす, へらす -to abate,to decrease,to diminish,to shorten
 減る, へる -to decrease (in size or number),to diminish,to abate
 変化, へんか -goblin,ghost,apparition,bugbear
-勉強 / 勉強する, べんきょうする -study, work, to study, to sell (a thing) cheap
 変更, へんこう -change,modification,alteration
 弁当, べんとう -box lunch
 方, ほう -side
@@ -1513,7 +1498,6 @@
 豆, まめ -beans,peas
 守る, まもる -to protect,to obey,to guard,to abide (by the rules)
 丸, まる -circle,full (month),perfection,purity,suffix for ship names
-丸い, まるい -round,circular,spherical
 まるで -quite,entirely,completely
 回す, まわす -to turn,to revolve
 回り, まわり -circumference,surroundings,circulation
@@ -1652,7 +1636,6 @@
 喜び, よろこび -(a) joy,(a) delight,rapture,pleasure,gratification,rejoicing,congratulations,felicitations
 宜しい, よろしい -(hon) good,OK,all right,fine,very well,will do,may,can
 よろしく -well,properly,suitably,best regards,please remember me
-四, よん -four
 来, らい -,for (10 days),next (year)
 楽, らく -comfort,ease
 利益, りえき -profits,gains,(political, economic) interest
@@ -1674,7 +1657,6 @@
 冷静, れいせい -calm,composure,coolness,serenity
 列, れつ -queue,line,row
 列車, れっしゃ -train (ordinary)
-練習, れんしゅうする -practice, to practice
 連想, れんそう -association (of ideas),suggestion
 連続, れんぞく -serial,consecutive,continuity,continuing
 老人, ろうじん -the aged,old person
@@ -1710,7 +1692,6 @@
 カード -card,curd
 キャプテン -captain
 キャンプ -camp
-キロ -(abbr) kilo-, kilogram, kilometre,
 クラシック -classic(s)
 グラス -(1) glass,(2) grass
 グランド -gland,grand,(electrical) ground
@@ -1723,7 +1704,6 @@
 コード -code,cord,chord
 ゴール -goal
 コピー -(1) a (photo)copy,(2) blurb on a book jacket
-コンピューター -computer
 サービス -(1) service,support system,(2) goods or services without charge
 サイン -(1) autograph,(2) sign,(3) sine
 ジーンズ -jeans
@@ -1786,7 +1766,6 @@
 ホーム -(1) platform,(2) home
 ボール -ball,bowl
 マーケット -market
-マイク -mike
 マスター -proprietor,manager,barowner,master (e.g. arts, science)
 ママ -Mama
 ミス -miss (mistake, error, failure),Miss

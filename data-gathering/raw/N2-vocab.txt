@@ -40,7 +40,6 @@
 危うい, あやうい -dangerous,critical,grave
 怪しい, あやしい -suspicious,dubious,doubtful
 荒い, あらい -rough,rude,wild
-粗い, あらい -coarse,rough
 あらすじ -outline,summary
 争う, あらそう -to dispute,to argue,to be at variance,to compete
 改めて, あらためて -another time,again,over again,anew,formally
@@ -203,7 +202,6 @@
 驚かす, おどろかす -to surprise,to frighten,to create a stir
 おねがいします -please
 各々, おのおの -each,every,either,respectively,severally
-伯母さん, おばさん -(hon) aunt
 叔母さん, おばさん -(1) aunt,(2) middle-aged lady
 おはよう -(abbr) Good morning
 お参り, おまいり -worship,shrine visit
@@ -480,7 +478,6 @@
 下品, げひん -vulgarity,meanness,indecency,coarseness
 煙い, けむい -smoky
 蹴る, ける -to kick
-けれど/けれども -but,however
 険しい, けわしい -inaccessible place,sharp eyes
 見学, けんがく -inspection,study by observation,field trip
 謙虚, けんきょ -modesty,humility
@@ -1820,7 +1817,6 @@
 ロビー -lobby
 論ずる, ろんずる -to argue,to discuss,to debate
 和英, わえい -Japanese-English
-分かる, わかる -to be understood
 分かれる, わかれる -to branch off,to diverge from,to fork,to split,to dispense,to scatter,to divide into
 若々しい, わかわかしい -youthful,young
 湧く, わく -to boil,to grow hot,to get excited,to gush forth

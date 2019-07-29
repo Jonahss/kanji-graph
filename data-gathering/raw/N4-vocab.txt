@@ -67,7 +67,7 @@
 押し入れ, おしいれ -closet
 お嬢さん, おじょうさん -young lady
 お宅, おたく -(polite) your house
-落ちる, おちる -to fall or drop
+落ちる, おちる -to fail (e.g. exam), to fall down, to drop
 おっしゃる -(respectful) to say
 夫, おっと -husband
 おつり -change from purchase, balance
@@ -102,7 +102,6 @@
 掛ける, かける -to hang something
 飾る, かざる -to decorate
 火事, かじ -fire
-ガス -gas
 堅 / 硬, 固い, かたい -hard
 形, かたち -shape
 片付ける, かたづける -to tidy up
@@ -164,7 +163,6 @@
 経済, けいざい -finance,economy
 警察, けいさつ -police
 景色, けしき -scene,landscape
-消しゴム, けしゴム -eraser
 下宿, げしゅく -lodging
 決して, けっして -never
 けれど / けれども -however
@@ -324,7 +322,6 @@
 男性, だんせい -male
 暖房, だんぼう -heating
 血, ち -blood
-チェックする -to check
 力, ちから -strength,power
 ちっとも -not at all (used with a negative verb)
 ちゃん -suffix for familiar person

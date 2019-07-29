@@ -374,7 +374,6 @@
 痛める, いためる -to hurt, to injure, to cause pain, to worry, to bother, to afflict, to be grieved over
 炒める, いためる -to stir-fry
 労る, いたわる -to pity, to sympathize with, to console, to care for, to be kind to
-市, いち -market, fair
 位地, いち -place, situation, position, location
 一々, いちいち -one by one, separately
 一概に, いちがいに -unconditionally, as a rule
@@ -514,7 +513,6 @@
 閲覧, えつらん -inspection, reading
 獲物, えもの -game, spoils, trophy
 襟, えり -neck, collar, lapel, neckband
-縁, えん -chance, fate, destiny, relation, bonds, connection, karma
 塩, えん -salt
 艶, えん -charming, fascinating, voluptuous
 園, えん -garden (esp. man-made)
@@ -595,7 +593,6 @@
 落ち込む, おちこむ -to fall into, to feel down (sad)
 落ち着き, おちつき -calm, composure
 落ち葉, おちば -fallen leaves, leaf litter, defoliation, shedding leaves
-落ちる, おちる -to fail (e.g. exam), to fall down, to drop
 おっかない -frightening, huge
 仰っしゃる, おっしゃる -to say, to speak, to tell, to talk
 乙, おつ -1. strange, quaint, stylish, chic, spicy, queer, witty, tasty, romantic, 2. 2nd in rank, second sign of the
@@ -1152,7 +1149,6 @@
 煙たい, けむたい -smoky, feeling awkward
 煙る, けむる -to smoke (e.g. fire)
 家来, けらい -retainer, retinue, servant
-けれど -but, however
 圏, けん -sphere, circle, range
 権, けん -authority, the right (to do something)
 権威, けんい -authority, power, influence
@@ -1451,7 +1447,6 @@
 産出, さんしゅつ -yield, produce
 参照, さんしょう -reference, consultation, consultation
 参上, さんじょう -calling on, visiting
-賛成, さんせい -approval, agreement, support, favour
 賛美, さんび -praise, adoration, glorification
 産婦人科, さんふじんか -maternity and gynecology department
 産物, さんぶつ -product, result, fruit
@@ -1555,7 +1550,6 @@
 萎む, しぼむ -to wither, to fade (away), to shrivel, to wilt
 仕舞, しまい -end, termination, informal (Noh play)
 仕舞う, しまう -to finish, to close, to do something completely, to put away, to put an end to
-しまった -Damn it!
 始末, しまつ -management, dealing, settlement, cleaning up afterwards
 泌み泌み, しみじみ -keenly, deeply, heartily
 染みる, しみる -to pierce, to permeate
@@ -2049,7 +2043,6 @@
 待望, たいぼう -expectant waiting
 怠慢, たいまん -negligence, procrastination, carelessness
 対面, たいめん -interview, meeting
-対立, たいりつ -confrontation, opposition, antagonism
 体力, たいりょく -physical strength
 対話, たいわ -interactive, interaction, conversation, dialogue
 耐える, たえる -to bear, to endure
