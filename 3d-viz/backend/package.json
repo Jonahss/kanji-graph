@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-ws": "^4.0.0",
-    "ioredisgraph": "^1.0.1",
+    "ioredisgraph": "^2.0.0",
     "yargs": "^13.1.0"
   },
   "devDependencies": {}
