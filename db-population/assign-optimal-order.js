@@ -10,19 +10,19 @@ async function getFirst () {
 }
 
 // 'touched' words have a relationship to a known kanji
-async function touchAdjacentWords (id) {
-  let res = await graph.query(`MATCH (k:kanji)<-[r]-(w:word) WHERE id(k) = ${id} SET w.state = 'touched'`)
+async function touchAdjacentWords () {
+  let res = await graph.query(`MATCH (k:kanji {state: 'known'})<-[r]-(w:word) SET w.state = 'touched'`)
   return res
 }
 
 // 'known' words can be found by comparing all 'touched' words with all 'touched' words which have relationships with unknown kanji.
-async function updateTouchedToKnown (id) {
+async function updateTouchedToKnown () {
   let touched = await getWordsWithState('touched')
-  let touchedButNotReadyToLearn = await graph.query(`MATCH (w:word {state: 'touched'})-[]->(k:kanji) WHERE id(k) != ${id} RETURN w`)
+  let touchedButNotReadyToLearn = await graph.query(`MATCH (w:word {state: 'touched'})-[]->(k:kanji) WHERE k.state != 'known' RETURN w`)
   console.log('touched', touched.length, 'touched but not ready to learn', touchedButNotReadyToLearn.length)
   let toLearn = _.differenceBy(touched, touchedButNotReadyToLearn, (w) => w.w.id)
 
-  await setWordState(toLearn.map(w => w.w.id), 'known')
+  await setNodeState(toLearn.map(w => w.w.id), 'known')
 
   return toLearn
 }
@@ -32,36 +32,43 @@ async function getWordsWithState (state) {
   return res
 }
 
-async function setWordState (ids, state) {
+async function setNodeState (ids, state) {
+  ids = [].concat(ids) // make it an array, even if you pass in a single id
   if (!ids.length) {
-    console.warn(`no words to set to state ${state}`)
+    console.warn(`no nodes to set to state ${state}`)
     return []
   }
-  let whereClause = ids.map(id => `id(w) = ${id}`).join(' OR ')
-  console.log(`MATCH (w:word) WHERE ${whereClause} SET w.state = '${state}'`)
-  let res = await graph.query(`MATCH (w:word) WHERE ${whereClause} SET w.state = '${state}'`)
+  let whereClause = ids.map(id => `id(n) = ${id}`).join(' OR ')
+  console.log(`MATCH (n) WHERE ${whereClause} SET n.state = '${state}'`)
+  let res = await graph.query(`MATCH (n) WHERE ${whereClause} SET n.state = '${state}'`)
   return res
 }
 
 async function run () {
+  // genesis
   let first = await getFirst()
   console.log('first', first)
-  let words = await touchAdjacentWords(first['id(k)'])
+  await setNodeState(first['id(k)'], 'known') // learn the first kanji
+
+  // learn words
+  let words = await touchAdjacentWords()
+  console.log(words)
 
   let touched = await getWordsWithState('touched')
 
   console.log('touched', touched.map(w => w.w.kanji), touched.length)
 
-  let justLearned = await updateTouchedToKnown(first['id(k)'])
+  let justLearned = await updateTouchedToKnown()
 
-  let known = await getWordsWithState('known')
+  console.log('words just learned', justLearned.map(w => w.w.kanji), justLearned.length)
 
-  console.log('known', known.map(w => w.w.kanji), known.length)
+  // learn next kanji
+
 
   graph.quit()
 }
 
-// cool! to get next: "MATCH (k:kanji)<-[]-(w:word {state: 'touched'}) WHERE id(k) != 49 RETURN k, count(k) as c order by c desc LIMIT 1" 
+// cool! to get next: "MATCH (k:kanji)<-[]-(w:word {state: 'touched'}) WHERE id(k) != 49 RETURN k, count(k) as c order by c desc LIMIT 1"
 
 run()
 
