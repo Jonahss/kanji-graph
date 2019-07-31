@@ -66,7 +66,7 @@ function getNonKanaKanji (string) {
     return []
   }
   return string.split('').filter(char => {
-    return /[\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]/.test(char) // from https://stackoverflow.com/a/53807563/375688
+    return /[\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A\u3005]/.test(char) // from https://stackoverflow.com/a/53807563/375688 but added \u3005 because I say `々` is a kanji
   })
 }
 
