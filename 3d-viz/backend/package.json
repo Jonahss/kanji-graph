@@ -10,7 +10,7 @@
     "build": ""
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-ws": "^4.0.0",
     "ioredisgraph": "^2.0.0",
     "yargs": "^13.1.0"
