@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",
-    "babel-brunch": "~6.0",
+    "babel-brunch": "~7.0",
     "babel-preset-env": "^1.7.0",
     "brunch": "^2",
     "clean-css-brunch": "^2",
